@@ -1,0 +1,49 @@
+version: '3.7'
+
+services:
+  webapp:
+    build: ./
+    container_name: webapp
+    restart: always
+    ports:
+      - 8000:8000
+    volumes:
+      - ./air_base/:/app/air_base/
+      - ./frontend/build/:/app/frontend/build/
+    env_file:
+      - ./.env
+      - ./.env_db
+    depends_on:
+      - frontend
+      - db
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+
+  frontend:
+    build: ./frontend/
+    container_name: frontend
+    volumes:
+      - ./frontend/build/:/app/frontend/build/
+      - ./frontend/src/:/app/frontend/src/
+    env_file:
+      - ./.env
+    command: npm run build:watch
+
+  db:
+    build: ./postgres/
+    restart: always
+    env_file:
+      - ./.env
+      - ./.env_db
+    expose:
+      - 5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  pgdata:
