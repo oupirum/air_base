@@ -1,0 +1,6 @@
+.idea/
+.DS_Store
+logfile
+venv/
+node_modules/
+__pycache__/
