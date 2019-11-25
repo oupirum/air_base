@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  webapp:
+    volumes:
+      - webapp:/app/air_base/
+      - frontend:/app/frontend/build/
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && gunicorn air_base.wsgi -b 0.0.0.0:8000"
+
+  frontend:
+    volumes:
+      - frontend:/app/frontend/build/
+    command: npm run build
+
+  nginx:
+    build: ./nginx/
+    restart: always
+    env_file:
+      - ./.env
+    ports:
+      - 80:80
+    volumes:
+      - frontend:/app/frontend/build/
+      - ./logs/:/app/logs/
+    depends_on:
+      - webapp
+
+volumes:
+  webapp:
+  frontend:

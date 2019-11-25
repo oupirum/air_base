@@ -8,3 +8,5 @@ RUN npm install react-scripts -g
 
 COPY ./public/ ./public/
 COPY ./src/ ./src/
+
+CMD npm start
