@@ -1,8 +1,8 @@
 version: '3.7'
 
 services:
-  webapp:
-    build: ./
+  django:
+    build: ./django/
     restart: always
     env_file:
       - ./.env
@@ -10,12 +10,13 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - ./air_base/:/app/air_base/
+      - ./django/air_base/:/app/django/air_base/
       - ./frontend/build/:/app/frontend/build/
-      - ./logs/:/app/logs/
+      - ./logs/:/app/django/logs/
     depends_on:
       - frontend
       - db
+    command: bash -c "./init/django_setup.sh && python manage.py runserver 0.0.0.0:8000"
 
   frontend:
     build: ./frontend/

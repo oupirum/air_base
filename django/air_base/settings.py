@@ -124,7 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'frontend/build/'),
+    os.path.join(BASE_DIR, '../frontend/build/'),
 )
 STATIC_URL = '/static/'
 
@@ -133,6 +133,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 3
 }
+
 
 LOGGING = {
     'version': 1,

@@ -1,11 +1,11 @@
 version: '3.7'
 
 services:
-  webapp:
+  django:
     volumes:
-      - webapp:/app/air_base/
+      - django:/app/django/air_base/
       - frontend:/app/frontend/build/
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && gunicorn air_base.wsgi -b 0.0.0.0:8000"
+    command: bash -c "./init/django_setup.sh && gunicorn air_base.wsgi -b 0.0.0.0:8000"
 
   frontend:
     volumes:
@@ -23,8 +23,9 @@ services:
       - frontend:/app/frontend/build/
       - ./logs/:/app/logs/
     depends_on:
-      - webapp
+      - django
+    command: nginx -g "daemon off;"
 
 volumes:
-  webapp:
+  django:
   frontend:
