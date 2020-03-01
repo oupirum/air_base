@@ -15,16 +15,18 @@ configure({ enforceActions: 'observed' });
 
 export const App = () => {
 	return (
-		<Provider {...rootStore}>
-			<Header />
-			<div className={s.content}>
-				<HashRouter basename="/">
-					<Route path="/" exact component={Main} />
-					<Route path="/department/:id" component={Department} />
-					<Route path="/employee/:id" component={Employee} />
-				</HashRouter>
-			</div>
-			<Footer />
-		</Provider>
+		<div className={s.app}>
+			<Provider {...rootStore}>
+				<Header />
+				<div className={s.content}>
+					<HashRouter basename="/">
+						<Route path="/" exact component={Main} />
+						<Route path="/department/:id" component={Department} />
+						<Route path="/employee/:id" component={Employee} />
+					</HashRouter>
+				</div>
+				<Footer />
+			</Provider>
+		</div>
 	);
 };

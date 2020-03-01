@@ -1,6 +1,7 @@
 from django.db import models
 from rest_framework import serializers
-from air_base.models.department import Department
+
+from air_base.models.department import Department, DepartmentSerializer
 
 
 class Employee(models.Model):
@@ -20,3 +21,4 @@ class EmployeeSerializer(serializers.Serializer):
 	position = serializers.CharField(allow_blank=True)
 	phone = serializers.CharField(allow_blank=True)
 	email = serializers.CharField(allow_blank=True)
+	department = DepartmentSerializer()

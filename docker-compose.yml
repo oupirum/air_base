@@ -20,6 +20,7 @@ services:
 
   frontend:
     build: ./frontend/
+    restart: always
     env_file:
       - ./.env
     volumes:
