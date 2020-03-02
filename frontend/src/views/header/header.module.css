@@ -1,11 +1,12 @@
 .header {
-	display: flex;
+
 }
 
 .logo {
-	flex: 1 1 auto;
+	float: left;
 }
 
-.search-input {
-	flex: 0 1 auto;
+.searchInput {
+	width: 200px;
+	float: right;
 }

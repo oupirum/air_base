@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { inject, observer } from 'mobx-react';
 import { useParams } from 'react-router-dom';
 import { EmployeeCard } from '../employee-card';
+import { List } from '../list';
 
 import s from './department.module.css';
 
@@ -18,11 +19,14 @@ export const Department = inject((rootStore) => ({
 	return (
 		<div className={s.department}>
 			<div>{department.name}</div>
-			<div className={s.employeesList}>
+			<List
+				hasMore={department.nextPageUrl}
+				loadMore={department.loadMoreEmployees}
+			>
 				{department.employees.map((employee) => (
 					<EmployeeCard employee={employee} />
 				))}
-			</div>
+			</List>
 		</div>
 	);
 }));

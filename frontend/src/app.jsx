@@ -19,14 +19,14 @@ export const App = () => {
 		<div className={s.app}>
 			<Provider {...rootStore}>
 				<HashRouter basename="/">
-					<Header />
+					<Header className={s.header} />
 					<div className={s.content}>
 						<Route path="/" exact component={Main} />
 						<Route path="/department/:id" component={Department} />
 						<Route path="/employee/:id" component={Employee} />
 						<Route path="/search" component={Search} />
 					</div>
-					<Footer />
+					<Footer className={s.footer} />
 				</HashRouter>
 			</Provider>
 		</div>

@@ -1,11 +1,12 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import s from './footer.module.css';
 
-export const Footer = () => {
+export const Footer = (props) => {
 	return (
-		<div className={s.footer}>
+		<footer className={classNames(props.className, s.footer)}>
 
-		</div>
+		</footer>
 	);
 };

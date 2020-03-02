@@ -1,7 +1,29 @@
 .app {
+	height: 100%;
+}
 
+.header {
+	height: 50px;
+	position: sticky;
+	top: 0;
+	padding: 10px 10px 0 10px;
+	box-sizing: border-box;
+	background: white;
 }
 
 .content {
+	top: 50px;
+	padding-bottom: 0;
+	padding-left: 10px;
+	padding-right: 10px;
+	box-sizing: border-box;
+}
 
+.footer {
+	height: 0;
+	position: fixed;
+	bottom: 0;
+	padding: 0 10px;
+	box-sizing: border-box;
+	background: white;
 }

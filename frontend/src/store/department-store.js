@@ -10,7 +10,7 @@ export class DepartmentStore {
 	@observable.shallow
 	employees = [];
 	@observable
-	_nextPageUrl = null;
+	nextPageUrl = null;
 
 	@action
 	async load(id) {
@@ -25,15 +25,16 @@ export class DepartmentStore {
 		const list = await fetch(`/api/department/${this.id}/employees`).then((res) => res.json());
 		runInAction(() => {
 			this.employees = list.results;
-			this._nextPageUrl = list.next;
+			this.nextPageUrl = list.next;
 		});
 	}
 
+	@action.bound
 	async loadMoreEmployees() {
-		const list = await fetch(this._nextPageUrl).then((res) => res.json());
+		const list = await fetch(this.nextPageUrl).then((res) => res.json());
 		runInAction(() => {
 			this.employees = this.employees.concat(list.results);
-			this._nextPageUrl = list.next;
+			this.nextPageUrl = list.next;
 		});
 	}
 }
