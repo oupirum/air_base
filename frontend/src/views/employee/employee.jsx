@@ -22,7 +22,7 @@ export const Employee = inject((rootStore) => ({
 				<label className={s.label}>Отдел</label>:
 				<span className={s.value}>
 					{data.department && (
-						<Link className={s.valueLink} to={`/department/${data.department.id}`}>
+						<Link to={`/department/${data.department.id}`} className={s.valueLink}>
 							{data.department.name}
 						</Link>
 					)}

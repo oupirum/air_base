@@ -15,7 +15,7 @@ export const Main = inject((rootStore) => ({
 		<div className={s.main}>
 			{departments.list.map((department) => (
 				<div key={department.id}>
-					<Link to={`/department/${department.id}`}>{department.name}</Link>
+					<Link to={`/department/${department.id}`} className={s.link}>{department.name}</Link>
 				</div>
 			))}
 		</div>
