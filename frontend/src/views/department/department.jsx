@@ -14,7 +14,7 @@ export const Department = inject((rootStore) => ({
 	useEffect(() => {
 		department.load(id);
 		department.loadEmployees();
-	}, [id]);
+	}, [department, id]);
 
 	return (
 		<div className={s.department}>

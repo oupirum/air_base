@@ -18,7 +18,7 @@ export const Search = inject((rootStore) => ({
 		if (query) {
 			search.execute(query);
 		}
-	}, [location.search]);
+	}, [location.search, search]);
 
 	const handleChange = useCallback(action((ev) => {
 		search.query = ev.currentTarget.value;

@@ -10,7 +10,7 @@ export const Main = inject((rootStore) => ({
 }))(observer(({ departments }) => {
 	useEffect(() => {
 		departments.load();
-	}, []);
+	}, [departments]);
 
 	return (
 		<div className={s.main}>

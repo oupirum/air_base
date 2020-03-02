@@ -13,7 +13,7 @@ export const Employee = inject((rootStore) => ({
 
 	useEffect(() => {
 		props.employee.load(id);
-	}, [id]);
+	}, [props.employee, id]);
 
 	return (
 		<div className={s.employee}>
