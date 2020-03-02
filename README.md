@@ -12,5 +12,5 @@ Then web app will be available at `localhost:8000`
 Edit `.env` and `.env_db` files (set up passwords, IPs, etc).
 Then run 
 <pre>
-$ docker-compose -f ./docker-compose.prod.yml up --build 
+$ docker-compose -f ./docker-compose.yml -f ./docker-compose.prod.yml up --build 
 </pre>
